@@ -1,0 +1,28 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import BlogPost from '../../layouts/BlogPost.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => data.published !== false);
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+const canonicalUrl = new URL(`/blog/${post.slug}/`, Astro.site).href;
+---
+
+<BlogPost
+  title={post.data.title}
+  description={post.data.excerpt}
+  date={post.data.date}
+  tags={post.data.tags}
+  readTime={post.data.readTime}
+  canonicalUrl={canonicalUrl}
+>
+  <Content />
+</BlogPost>

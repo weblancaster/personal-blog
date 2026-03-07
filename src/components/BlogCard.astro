@@ -1,0 +1,26 @@
+---
+interface Props {
+  href: string;
+  title: string;
+  excerpt: string;
+  date: Date;
+  tags: string[];
+  readTime?: string;
+}
+
+const { href, title, excerpt, date, tags, readTime } = Astro.props;
+
+const formattedDate = date.toLocaleDateString('en-US', { year: 'numeric', month: 'short' });
+---
+
+<a href={href} class="blog-card">
+  <div class="blog-date">{formattedDate}</div>
+  <div>
+    <h3 class="blog-title">{title}</h3>
+    <p class="blog-excerpt">{excerpt}</p>
+    <div class="blog-footer">
+      {tags.map((tag) => <span class="blog-tag">{tag}</span>)}
+      {readTime && <span class="blog-read">{readTime}</span>}
+    </div>
+  </div>
+</a>
