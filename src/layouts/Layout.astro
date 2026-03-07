@@ -1,0 +1,81 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+  canonicalUrl?: string;
+}
+
+const {
+  title,
+  description = 'Michael Lancaster is a Lead & Architect Frontend Software Engineer with 13+ years building scalable web and mobile applications. Expert in React, TypeScript, Next.js, GraphQL, and micro frontend architecture. Based in Costa Mesa, CA.',
+  ogImage = 'https://bymichaellancaster.com/og-image.png',
+  canonicalUrl = Astro.url.href,
+} = Astro.props;
+
+import Sidebar from '../components/Sidebar.astro';
+import Footer from '../components/Footer.astro';
+
+const isHomePage = Astro.url.pathname === '/' || Astro.url.pathname === '';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content="Michael Lancaster, Frontend Engineer, React, TypeScript, Next.js, GraphQL, Micro Frontend, JavaScript, Software Architect, Costa Mesa, California" />
+    <meta name="author" content="Michael Lancaster" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    {isHomePage && (
+      <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Michael Lancaster",
+        "jobTitle": "Lead & Architect Frontend Software Engineer",
+        "description": "Frontend Software Engineer with 13+ years experience in React, TypeScript, Next.js, GraphQL, and micro frontend architecture.",
+        "url": "https://bymichaellancaster.com",
+        "email": "michaell.llancaster@gmail.com",
+        "address": { "@type": "PostalAddress", "addressLocality": "Costa Mesa", "addressRegion": "CA", "addressCountry": "US" },
+        "sameAs": [
+          "https://linkedin.com/in/michaellancaster1",
+          "https://github.com/weblancaster",
+          "https://bymichaellancaster.com"
+        ]
+      })} />
+    )}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="layout">
+      <Sidebar isHomePage={isHomePage} />
+      <main class="main">
+        <slot />
+        <Footer />
+      </main>
+    </div>
+  </body>
+</html>
