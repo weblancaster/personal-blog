@@ -120,7 +120,7 @@ const latestPosts = allPosts
     <div class="blog-list">
       {latestPosts.map((post) => (
         <BlogCard
-          href={`/blog/${post.slug}/`}
+          href={`${import.meta.env.BASE_URL}blog/${post.slug}/`}
           title={post.data.title}
           excerpt={post.data.excerpt}
           date={post.data.date}
@@ -131,14 +131,14 @@ const latestPosts = allPosts
     </div>
 
     {allPosts.length > 5 && (
-      <a href="/blog/" class="blog-view-all">
+      <a href={`${import.meta.env.BASE_URL}blog/`} class="blog-view-all">
         View all {allPosts.length} posts
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
       </a>
     )}
 
     {allPosts.length <= 5 && allPosts.length > 0 && (
-      <a href="/blog/" class="blog-view-all">
+      <a href={`${import.meta.env.BASE_URL}blog/`} class="blog-view-all">
         View all posts
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
       </a>
