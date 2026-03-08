@@ -17,8 +17,6 @@ const {
 
 import Sidebar from '../components/Sidebar.astro';
 import Footer from '../components/Footer.astro';
-
-const isHomePage = Astro.url.pathname === '/' || Astro.url.pathname === '';
 ---
 
 <!doctype html>
@@ -47,23 +45,7 @@ const isHomePage = Astro.url.pathname === '/' || Astro.url.pathname === '';
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
 
-    {isHomePage && (
-      <script type="application/ld+json" set:html={JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Michael Lancaster",
-        "jobTitle": "Lead & Architect Frontend Software Engineer",
-        "description": "Frontend Software Engineer with 13+ years experience in React, TypeScript, Next.js, GraphQL, and micro frontend architecture.",
-        "url": "https://bymichaellancaster.com",
-        "email": "michaell.llancaster@gmail.com",
-        "address": { "@type": "PostalAddress", "addressLocality": "Costa Mesa", "addressRegion": "CA", "addressCountry": "US" },
-        "sameAs": [
-          "https://linkedin.com/in/michaellancaster1",
-          "https://github.com/weblancaster",
-          "https://bymichaellancaster.com"
-        ]
-      })} />
-    )}
+    <slot name="head" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -71,7 +53,7 @@ const isHomePage = Astro.url.pathname === '/' || Astro.url.pathname === '';
   </head>
   <body>
     <div class="layout">
-      <Sidebar isHomePage={isHomePage} />
+      <Sidebar />
       <main class="main">
         <slot />
         <Footer />
