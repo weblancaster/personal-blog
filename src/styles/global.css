@@ -166,7 +166,6 @@ body::before {
 /* ── SECTIONS ── */
 .section {
   padding: 60px 0;
-  border-bottom: 1px solid var(--border);
   opacity: 0;
   transform: translateY(18px);
   animation: fadeUp 0.65s ease forwards;

@@ -1,9 +1,9 @@
 ---
-interface Props {
-  isHomePage?: boolean;
-}
+const pathname = Astro.url.pathname;
+const base = import.meta.env.BASE_URL;
 
-const { isHomePage = false } = Astro.props;
+const isHome = pathname === base || pathname === base.slice(0, -1);
+const isAbout = pathname.startsWith(`${base}about`);
 ---
 
 <aside class="sidebar">
@@ -13,21 +13,9 @@ const { isHomePage = false } = Astro.props;
   </div>
 
   <nav class="nav" aria-label="Page sections">
-    {isHomePage ? (
-      <>
-        <a href="#about">About</a>
-        <a href="#experience">Experience</a>
-        <a href="#writing">Writing</a>
-        <a href="#talks">Talks &amp; Publications</a>
-        <a href="#oss">Open Source</a>
-        <a href="#skills">Skills</a>
-      </>
-    ) : (
-      <>
-        <a href={import.meta.env.BASE_URL}>Home</a>
-        <a href={`${import.meta.env.BASE_URL}blog/`}>All Posts</a>
-      </>
-    )}
+    <a href={base} class:list={[{ active: isHome }]}>Home</a>
+    <a href={`${base}about/`} class:list={[{ active: isAbout }]}>About</a>
+    <a href="https://linkedin.com/in/michaellancaster1" target="_blank" rel="noopener noreferrer">Experience</a>
   </nav>
 
   <div class="sidebar-socials">
@@ -53,36 +41,8 @@ const { isHomePage = false } = Astro.props;
       quantaquest.ai
     </a>
 
-    <a href="mailto:michaell.llancaster@gmail.com" class="social-link">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-      michaell.llancaster@gmail.com
-    </a>
+
   </div>
 </aside>
 
-{isHomePage && (
-  <script>
-    // Scrollspy — highlight active nav item
-    (function () {
-      const sections = document.querySelectorAll<HTMLElement>('section[id]');
-      const navLinks = document.querySelectorAll<HTMLAnchorElement>('.nav a');
-      if (!sections.length || !navLinks.length) return;
 
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              const targetId = '#' + entry.target.id;
-              navLinks.forEach((link) => {
-                link.classList.toggle('active', link.getAttribute('href') === targetId);
-              });
-            }
-          });
-        },
-        { rootMargin: '0px 0px -55% 0px', threshold: 0 }
-      );
-
-      sections.forEach((s) => observer.observe(s));
-    })();
-  </script>
-)}

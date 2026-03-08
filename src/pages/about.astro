@@ -1,0 +1,157 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+---
+
+<Layout
+  title="About — Michael Lancaster"
+  description="Michael Lancaster is a Staff & Lead Frontend Software Engineer with 13+ years building scalable web and mobile applications. Expert in React, TypeScript, Next.js, GraphQL, and micro frontends."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Michael Lancaster",
+      "jobTitle": "Lead & Architect Frontend Software Engineer",
+      "description": "Frontend Software Engineer with 13+ years experience in React, TypeScript, Next.js, GraphQL, and micro frontend architecture.",
+      "url": "https://bymichaellancaster.com",
+      "address": { "@type": "PostalAddress", "addressLocality": "Costa Mesa", "addressRegion": "CA", "addressCountry": "US" },
+      "sameAs": [
+        "https://linkedin.com/in/michaellancaster1",
+        "https://github.com/weblancaster",
+        "https://bymichaellancaster.com"
+      ]
+    })} />
+  </Fragment>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="hero-eyebrow">Costa Mesa, CA — Available for hire</div>
+
+    <h1 class="hero-h1">
+      13+ years crafting<br /><em>frontend</em> that scales.
+    </h1>
+
+    <p class="hero-bio">
+      I'm <strong>Michael Lancaster</strong>, a Staff &amp; Lead Frontend Software Engineer building
+      web and mobile applications at scale. Across my 13+ years of experience, I've architected
+      <strong>micro frontend systems from scratch</strong>, managed high-performing engineering teams,
+      and shipped mission-critical products for companies like Mission Lane, Endpoint, and BlackBerry.
+      I even designed and launched a full-stack Go/React Native startup solo as a founder.
+    </p>
+
+    <p class="hero-bio">
+      My focus is the intersection of <strong>clean architecture, product velocity, and developer experience</strong>.
+      I specialize in React, Next.js, and TypeScript, building robust CI/CD pipelines and testing strategies to
+      accelerate entire teams. Currently scaling external experiences at <strong>Mission Lane</strong> and building
+      <a href="https://www.quantaquest.ai" target="_blank" rel="noopener">QuantaQuest AI</a> for fun.
+      Outside of code, I'm a <strong>Brazilian Jiu-Jitsu black belt</strong>—teaching me more about
+      discipline and staying calm under pressure than any engineering book.
+    </p>
+
+    <div class="strengths">
+      <span class="strength">Micro Frontends</span>
+      <span class="strength">React / Next.js</span>
+      <span class="strength">TypeScript</span>
+      <span class="strength">GraphQL</span>
+      <span class="strength">React Native</span>
+      <span class="strength">Performance Optimization</span>
+      <span class="strength">DX &amp; CI/CD</span>
+      <span class="strength">Team Leadership</span>
+      <span class="strength">AI Tooling</span>
+    </div>
+
+    <a href="https://linkedin.com/in/michaellancaster1" target="_blank" rel="noopener" class="hero-cta">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      Get in touch
+    </a>
+  </section>
+
+  <!-- TALKS & PUBLICATIONS -->
+  <section class="section" id="talks">
+    <SectionHeader num="02" title="Talks &amp; Publications" />
+
+    <div class="talks-list">
+
+      <a href="https://bymichaellancaster.com" class="talk-item" target="_blank" rel="noopener">
+        <div>
+          <div class="talk-name">Desktop Apps with NW.js</div>
+          <div class="talk-meta">Published article &amp; guide · bymichaellancaster.com</div>
+        </div>
+        <span class="talk-badge pub">Publication</span>
+      </a>
+
+      <a href="https://bymichaellancaster.com" class="talk-item" target="_blank" rel="noopener">
+        <div>
+          <div class="talk-name">Intro to React.js</div>
+          <div class="talk-meta">Published tutorial · bymichaellancaster.com</div>
+        </div>
+        <span class="talk-badge pub">Publication</span>
+      </a>
+
+      <a href="https://github.com/weblancaster" class="talk-item" target="_blank" rel="noopener">
+        <div>
+          <div class="talk-name">Open Source on GitHub</div>
+          <div class="talk-meta">Contributions, side projects &amp; tooling · github.com/weblancaster</div>
+        </div>
+        <span class="talk-badge oss">GitHub</span>
+      </a>
+
+    </div>
+
+    <p style="margin-top: 24px; font-size: 12px; color: var(--muted); line-height: 1.7;">
+      More talks and publications coming. If you'd like me to speak at your event or contribute to your publication,
+      <a href="https://linkedin.com/in/michaellancaster1" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: none;">get in touch</a>.
+    </p>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="section" id="skills">
+    <SectionHeader num="01" title="Skills" />
+
+    <div class="skills-wrap">
+      <div>
+        <div class="skill-group-title">Frontend</div>
+        <ul class="skill-list">
+          <li>React.js</li>
+          <li>Next.js</li>
+          <li>TypeScript</li>
+          <li>React Native / Expo</li>
+          <li>GraphQL</li>
+          <li>React Query</li>
+          <li>Redux / Sagas</li>
+          <li>Micro Frontends (NX)</li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="skill-group-title">Backend &amp; Infra</div>
+        <ul class="skill-list">
+          <li>Node.js / Express</li>
+          <li>Go / Gin-Gonic</li>
+          <li>PostgreSQL</li>
+          <li>Firebase / GCP</li>
+          <li>Docker</li>
+          <li>Cloudflare</li>
+          <li>GitHub Actions</li>
+          <li>Digital Ocean</li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="skill-group-title">Testing &amp; DX</div>
+        <ul class="skill-list">
+          <li>Jest / React Testing Lib</li>
+          <li>Cypress / Playwright</li>
+          <li>Mock Service Worker</li>
+          <li>Storybook</li>
+          <li>CI/CD Pipelines</li>
+          <li>SSR / ISR / Edge</li>
+          <li>Performance Optimization</li>
+          <li>Engineering Leadership</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</Layout>
