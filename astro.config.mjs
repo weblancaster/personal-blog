@@ -1,5 +1,6 @@
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
+import rehypeExternalLinks from "rehype-external-links";
 
 export default defineConfig({
   site: "https://bymichaellancaster.com",
@@ -10,4 +11,12 @@ export default defineConfig({
   integrations: [sitemap()],
   output: "static",
   trailingSlash: "always",
+  markdown: {
+    rehypePlugins: [
+      [
+        rehypeExternalLinks,
+        { target: "_blank", rel: ["noopener", "noreferrer"] },
+      ],
+    ],
+  },
 });

@@ -9,7 +9,8 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.4.0",
-    "@astrojs/sitemap": "^3.2.0"
+    "@astrojs/sitemap": "3.2.0",
+    "astro": "5.4.0",
+    "rehype-external-links": "3.0.0"
   }
 }
