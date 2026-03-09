@@ -53,11 +53,58 @@ import Footer from '../components/Footer.astro';
   </head>
   <body>
     <div class="layout">
+      <header class="mobile-header">
+        <span class="mobile-site-name">Michael Lancaster</span>
+        <button
+          class="hamburger-btn"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+          aria-controls="sidebar"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </header>
+      <div class="backdrop" aria-hidden="true"></div>
       <Sidebar />
       <main class="main">
         <slot />
         <Footer />
       </main>
     </div>
+
+    <script>
+      const hamburger = document.querySelector('.hamburger-btn') as HTMLButtonElement;
+      const sidebar = document.getElementById('sidebar');
+      const backdrop = document.querySelector('.backdrop');
+
+      function openMenu() {
+        sidebar?.classList.add('active');
+        backdrop?.classList.add('active');
+        hamburger?.classList.add('active');
+        hamburger?.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeMenu() {
+        sidebar?.classList.remove('active');
+        backdrop?.classList.remove('active');
+        hamburger?.classList.remove('active');
+        hamburger?.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+
+      hamburger?.addEventListener('click', () => {
+        const isOpen = hamburger.getAttribute('aria-expanded') === 'true';
+        isOpen ? closeMenu() : openMenu();
+      });
+
+      backdrop?.addEventListener('click', closeMenu);
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeMenu();
+      });
+    </script>
   </body>
 </html>
